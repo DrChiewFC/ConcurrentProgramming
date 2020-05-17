@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication1.NumThreadController">
+   <children>
+      <TextField fx:id="t" layoutX="236.0" layoutY="149.0" prefHeight="51.0" prefWidth="128.0" />
+      <Label fx:id="labelt" layoutX="146.0" layoutY="87.0" prefHeight="35.0" prefWidth="309.0" text="Enter number of threads:">
+         <font>
+            <Font name="Century Gothic" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="label1" layoutX="27.0" layoutY="298.0" prefHeight="73.0" prefWidth="559.0">
+         <font>
+            <Font name="Century Gothic" size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="btn" layoutX="284.0" layoutY="225.0" mnemonicParsing="false" onAction="#handleButtonAction" text="OK" />
+   </children>
+</AnchorPane>
