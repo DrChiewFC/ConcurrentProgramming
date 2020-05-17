@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="javafxapplication1.ResultController">
+   <children>
+      <Label layoutX="87.0" layoutY="64.0" text="Points:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="59.0" layoutY="102.0" text="Your Result:">
+         <font>
+            <Font name="Century Gothic" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="372.0" layoutY="64.0" text="Duration:" />
+      <Label layoutX="232.0" layoutY="64.0" text="Threads:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#7de0f8" height="252.0" layoutX="61.0" layoutY="127.0" stroke="BLACK" strokeType="INSIDE" width="453.0" />
+      <Label fx:id="lpo" layoutX="135.0" layoutY="60.0" prefHeight="29.0" prefWidth="49.0" />
+      <Label fx:id="ldur" layoutX="427.0" layoutY="60.0" prefHeight="29.0" prefWidth="49.0" />
+      <Label fx:id="lthr" layoutX="294.0" layoutY="60.0" prefHeight="29.0" prefWidth="49.0" />
+      <Label layoutX="206.0" layoutY="216.0" text="Stay tuned!">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
