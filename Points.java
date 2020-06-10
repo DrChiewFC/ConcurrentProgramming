@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package assignmentWIF3003;
+package assignmentconcurrentii;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  *
@@ -14,37 +15,38 @@ import java.util.Random;
  */
 public class Points {
 
-	ArrayList<Float> xPoint = new ArrayList<>();
-	ArrayList<Float> yPoint = new ArrayList<>();
+	static ArrayList<Float> xPoint;
+	static ArrayList<Float> yPoint;
+	static ArrayList<String> isTaken;
 	
-//	float xPoint;	
-	final Object lock = new Object();
-//	float yPoint;
-	
+
+	final ReentrantLock lock = new ReentrantLock();
+
 	public Points() {
-		
-	}
-	
-	public Points(int n) {
-		
+
 	}
 
+	public Points(int n) {
+		xPoint = new ArrayList<Float>(n);
+		yPoint = new ArrayList<Float>(n);
+		isTaken = new ArrayList<String>(n);
+		for(int i=0;i<n;i++) {
+			isTaken.add("false");
+		}
+//		for(int i=0;i<isTaken.size();i++) {
+//			System.out.println(isTaken.get(i));
+//		}
+	}
+
+	//to generate random unique points, no points are same
 	public void generateRandomPoints(int n) {
 		Random rand = new Random();
+		System.out.println("\nList of Points : ");
 		for (int i = 0; i < n; i++) {
-//			points[i].xPoint = rand.nextFloat() * (1000 - 0) + 0;
-//			points[i].yPoint = rand.nextFloat() * (1000 - 0) + 0;
-						
 			xPoint.add(rand.nextFloat() * (1000 - 0) + 0);
 			yPoint.add(rand.nextFloat() * (1000 - 0) + 0);
 
 			for (int j = 0; j < i; j++) {
-//				while(points[j].xPoint == points[j-1].xPoint) {
-//					points[i].xPoint = rand.nextFloat() * (1000 - 0) + 0;
-//				}
-//				while(points[j].yPoint == points[j-1].yPoint) {
-//					points[i].yPoint = rand.nextFloat() * (1000 - 0) + 0;
-//				}
 				while (xPoint.get(j).equals(xPoint.get(j + 1) > 0)) {
 					xPoint.set(j, rand.nextFloat() * (1000 - 0) + 0);
 				}
@@ -52,59 +54,29 @@ public class Points {
 					yPoint.set(j, rand.nextFloat() * (1000 - 0) + 0);
 				}
 			}
-			
-			System.out.println("Point "+i+" = ("+xPoint.get(i)+","+yPoint.get(i)+")");
+			System.out.println("Point " + (i + 1) + " = (" + xPoint.get(i) + "," + yPoint.get(i) + ")");
 		}
-		
-	
-//	public void generateRandomPoints(Points[] points,int n) {
-//		Random rand = new Random();
-//		for (int i = 0; i < n; i++) {
-////			points[i].xPoint = rand.nextFloat() * (1000 - 0) + 0;
-////			points[i].yPoint = rand.nextFloat() * (1000 - 0) + 0;
-//						
-//			xPoint.add(rand.nextFloat() * (1000 - 0) + 0);
-//			yPoint.add(rand.nextFloat() * (1000 - 0) + 0);
-////
-//			for (int j = n; j > 0; j--) {
-////				while(points[j].xPoint == points[j-1].xPoint) {
-////					points[i].xPoint = rand.nextFloat() * (1000 - 0) + 0;
-////				}
-////				while(points[j].yPoint == points[j-1].yPoint) {
-////					points[i].yPoint = rand.nextFloat() * (1000 - 0) + 0;
-////				}
-//				while (xPoint.get(j).equals(xPoint.get(j - 1) > 0)) {
-//					xPoint.set(j, rand.nextFloat() * (1000 - 0) + 0);
-//				}
-//				while (yPoint.get(j).equals(yPoint.get(j - 1) > 0)) {
-//					yPoint.set(j, rand.nextFloat() * (1000 - 0) + 0);
-//				}
-//			}
-		}
-		
-		
+	}
 
-	
-	public float getxPoint(int index) {
-		synchronized (lock) {
-//			System.out.println("Xpoint : "+xPoint.get(index));
-			return xPoint.get(index);}
+	//to assign points to thread
+	//if isTaken flag is false, assign points to the thread
+	//if isTaken flag is true, return 0 to thread to get other points
+	public synchronized float getxPoint(int index) {
+		if(isTaken.get(index).equals("false")) {
+			isTaken.set(index, "true");
+			return xPoint.get(index);
+		}
+		else {
+			return 0;
+		}
+		
 	}
 
 	public float getyPoint(int index) {
-		synchronized (lock) {			
-		return yPoint.get(index);}
+		return yPoint.get(index);
 	}
-
-//	public void setxPoint(float xPoint) {
-//		this.xPoint = xPoint;
-//	}
-//	
-//	public void setyPoint(float yPoint) {
-//		this.yPoint = yPoint;
-//	}
-//	
-//	public synchronized void getPoints() {
-		
-				
+	
+	public static String getIsTaken() {
+		return isTaken.toString();
 	}
+}
