@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication1.FXMLDocumentController">
+   <children>
+      <TextField fx:id="n" layoutX="248.0" layoutY="90.0" prefHeight="51.0" prefWidth="101.0" />
+      <Label layoutX="164.0" layoutY="39.0" prefHeight="57.0" prefWidth="272.0" text="Enter number of points:">
+         <font>
+            <Font name="Century Gothic" size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="okbtn" layoutX="514.0" layoutY="355.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="55.0" text="ENTER" />
+      <Label layoutX="107.0" layoutY="231.0" prefHeight="57.0" prefWidth="421.0" text="Enter the duration for the program:">
+         <font>
+            <Font name="Century Gothic" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="147.0" layoutY="137.0" prefHeight="57.0" prefWidth="304.0" text="Enter number of threads:">
+         <font>
+            <Font name="Century Gothic" size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="m" layoutX="250.0" layoutY="275.0" prefHeight="51.0" prefWidth="101.0" />
+      <TextField fx:id="t" layoutX="248.0" layoutY="180.0" prefHeight="51.0" prefWidth="101.0" />
+      <Label fx:id="warn" layoutX="53.0" layoutY="326.0" prefHeight="74.0" prefWidth="436.0" />
+   </children>
+</AnchorPane>
